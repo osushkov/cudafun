@@ -2,8 +2,11 @@ CC = g++
 CUDACC = nvcc
 
 CCFLAGS += -std=c++11
-CCFLAGS += -I/usr/local/include
-CCFLAGS += -Wall
+CCFLAGS += -I/usr/local/include -I/usr/include/eigen3
+CCFLAGS += -Wall -Wno-deprecated-declarations
+
+CUDAFLAGS += -I/usr/local/include -I/usr/include/eigen3
+CUDAFLAGS += -Xcudafe "--diag_suppress=boolean_controlling_expr_is_constant"
 
 ifdef RELEASE
   CCFLAGS += -O3
@@ -15,4 +18,5 @@ ifdef DEBUG
 endif
 
 CLFLAGS += -L/usr/local/cuda/lib64 -lcudart
+CLFLAGS += -L/usr/local/lib
 CLFLAGS += -lpthread

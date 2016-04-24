@@ -1,7 +1,9 @@
 
 #pragma once
 
-namespace CudaKernel {
+#include "../common/Math.hpp"
+#include <vector>
 
-void RunKernel(void);
+namespace CudaKernel {
+EMatrix Multiply0(EMatrix &a, EMatrix &b);
 }
