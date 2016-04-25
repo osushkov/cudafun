@@ -1,9 +1,9 @@
 
 #pragma once
 
-#include "../common/Math.hpp"
+#include "../math/Matrix.hpp"
 #include <vector>
 
 namespace CudaKernel {
-EMatrix Multiply0(EMatrix &a, EMatrix &b);
+math::Matrix Multiply(const std::vector<math::Matrix> &matrixArray);
 }
