@@ -104,15 +104,15 @@ Matrix &Matrix::operator-=(const Matrix &o) {
 }
 
 Matrix &Matrix::operator*=(float s) {
-  for (auto &v : data) {
-    v *= s;
+  for (unsigned i = 0; i < data.size(); i++) {
+    data[i] *= s;
   }
   return *this;
 }
 
 Matrix &Matrix::operator/=(float s) {
-  for (auto &v : data) {
-    v /= s;
+  for (unsigned i = 0; i < data.size(); i++) {
+    data[i] /= s;
   }
   return *this;
 }
@@ -123,12 +123,14 @@ unsigned Matrix::Cols(void) const { return cols; }
 
 MatrixView Matrix::GetView(void) const {
   MatrixView result = MatrixView::CreateMatrixView(rows, cols);
-  result.data = const_cast<float *>(&data[0]);
+  result.data = &(const_cast<FloatStore *>(&data)->operator[](0));
   return result;
 }
 
 Matrix &Matrix::Fill(float val) {
-  std::fill(data.begin(), data.end(), val);
+  for (unsigned i = 0; i < data.size(); i++) {
+    data[i] = val;
+  }
   return *this;
 }
 

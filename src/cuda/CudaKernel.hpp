@@ -5,5 +5,9 @@
 #include <vector>
 
 namespace CudaKernel {
-math::Matrix Multiply(const std::vector<math::Matrix> &matrixArray);
+void *AllocPinned(size_t amount);
+void FreePinned(void *ptr);
+
+std::vector<math::Matrix> Multiply(const std::vector<std::vector<math::Matrix>> &matrixArray);
+math::Matrix MultiplyMT(const std::vector<math::Matrix> &matrixArray);
 }

@@ -1,6 +1,7 @@
 
 #pragma once
 
+#include "FloatStore.hpp"
 #include "MatrixView.hpp"
 #include <functional>
 #include <iostream>
@@ -15,7 +16,7 @@ namespace math {
 class Matrix {
   unsigned rows;
   unsigned cols;
-  std::vector<float> data; // row major storage of data.
+  FloatStore data; // row major storage of data.
 
 public:
   Matrix(unsigned rows, unsigned cols);
